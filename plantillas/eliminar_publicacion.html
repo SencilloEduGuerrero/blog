@@ -1,0 +1,12 @@
+<!-- plantillas/eliminar_publicacion.html -->
+
+{% extends '_base.html' %}
+
+{% block contenido %}
+<h1>Eliminar Entrada del Blog</h1>
+<form action = "" method = "post">{% csrf_token %}
+    <p>¿Esta seguro de que desea eliminar {{ publicacion.titulo }}?</p>
+    <input type = "submit" value = "Confirmar">
+    <input type = "button" value = "Cancelar" onclick = 'location.href = "{% url 'eliminar_pub' publicacion.pk %}"'>
+</form>
+{% endblock contenido %}

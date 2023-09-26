@@ -13,12 +13,32 @@
 </head>
 <body>
     <header>
-        <h1><a href = "{% url 'inicio' %}">Blog de Django</a></h1>
+        <div>
+            <h1><a href = "{% url 'inicio' %}">Blog de Django</a></h1>
+        </div>
+        <div class = "nav_right">
+            <a href = "{% url 'pub_nuevo' %}"> + Nueva entrada de Blog</a>
+        </div>
+    
     </header>
 
-    <div>
+    <!-- Saludo u opcion de iniciar sesión -->
+    {% if user.is_authenticated %}
+        <div style = "display: flex; gap: 2rem;">
+        <p>Hola {{ user.name }}</p>
+        <p>
+            <a href = "{% url 'logout'%}">Cerrar sesión</a>
+        </p>
+    </div>
+    {% else %}
+        <p>No has ingresado</p>
+        <a href = "{% url 'login' %}">Iniciar Sesion</a>
+        <a href = "{% url 'signup' %}">Registrarse</a>
+    {% endif %}
+
+    <main>
         {% block contenido %}
         {% endblock contenido %}
-    </div>
+    </main>
 </body>
 </html>
