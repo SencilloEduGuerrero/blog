@@ -25,9 +25,9 @@
     <!-- Saludo u opcion de iniciar sesión -->
     {% if user.is_authenticated %}
         <div style = "display: flex; gap: 2rem;">
-        <p>Hola {{ user.name }}</p>
+        <p>Hola {{ user.username }}</p>
         <p>
-            <a href = "{% url 'logout'%}">Cerrar sesión</a>
+            <a href = "{% url 'logout' %}">Cerrar sesión</a>
         </p>
     </div>
     {% else %}

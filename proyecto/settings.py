@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'blog.apps.BlogConfig',
     'cuentas.apps.CuentasConfig'
 ]
@@ -48,6 +49,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleWare',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -117,8 +119,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'estaticos/'
+STATIC_URL = '/estaticos/'
 STATICFILES_DIRS = [BASE_DIR / 'estaticos']
+STATIC_ROOT = BASE_DIR / 'archivosestaticos'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -126,4 +130,4 @@ STATICFILES_DIRS = [BASE_DIR / 'estaticos']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'inicio'
-LOGOUT_REDICT_URL = 'inicio'
+LOGOUT_REDIRECT_URL = 'inicio'

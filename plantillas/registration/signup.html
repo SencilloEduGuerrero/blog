@@ -1,7 +1,8 @@
 <!-- plantillas/registration/signup.html -->
+
 {% extends '_base.html' %}
 
-{%b block contenido %}
+{% block contenido %}
 <h2>Registro</h2>
 <form method = "post">{% csrf_token %}
     {{ form.as_p }}
